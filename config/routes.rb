@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post 'rooms/join'
+  post 'rooms/join' => 'rooms#join'
   # resources :scaffold_tests
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_16_135734) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_185224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_135734) do
     t.index ["user_id"], name: "index_scaffold_tests_on_user_id"
   end
 
+  create_table "tests", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tests_on_user_id"
+  end
+
   create_table "user_rooms", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
@@ -57,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_135734) do
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "scaffold_tests", "users"
+  add_foreign_key "tests", "users"
   add_foreign_key "user_rooms", "rooms"
   add_foreign_key "user_rooms", "users"
 end
