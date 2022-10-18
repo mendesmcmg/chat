@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'json'
 
 RSpec.describe "Rooms", type: :request do
   # post 'rooms/join' => 'rooms#join'
@@ -11,8 +12,11 @@ RSpec.describe "Rooms", type: :request do
       room1.add_user(user1)
 
       get "/rooms/#{room1.id}/active_users"
-      puts room1.id
-      expect(response.body).to eq "-"
+      body = JSON.parse(response.body)
+
+      expect(body.length).to eq 1
+      expect(body[0]["name"]).to eq "no1"
+      expect(body[0]["id"]).to eq user1.id
     end
   end
 end
