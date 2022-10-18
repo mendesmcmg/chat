@@ -16,7 +16,8 @@ class RoomsController < ApplicationController
   end
 
   def active_users
-    active_users = UserRoom.where(:active => true, :room_id => params[:room_id])
+    active_user_rooms = UserRoom.where(:active => true, :room_id => params[:room_id])
+    active_users = active_user_rooms.map { |room| room.user }
 
     render json: active_users
   end
