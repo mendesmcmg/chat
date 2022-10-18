@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    messages = Message.where(:room_id => params[:room_id] )
+    messages = Message.where(:room_id => params[:room_id] ).order(:created_at).page params[:page]
 
     render json: messages
   end
