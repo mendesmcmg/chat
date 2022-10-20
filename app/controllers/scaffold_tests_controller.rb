@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ScaffoldTestsController < ApplicationController
-  before_action :set_scaffold_test, only: %i[ show update destroy ]
+  before_action :set_scaffold_test, only: %i[show update destroy]
 
   # GET /scaffold_tests
   def index
@@ -39,13 +41,14 @@ class ScaffoldTestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_scaffold_test
-      @scaffold_test = ScaffoldTest.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def scaffold_test_params
-      params.require(:scaffold_test).permit(:text, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_scaffold_test
+    @scaffold_test = ScaffoldTest.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def scaffold_test_params
+    params.require(:scaffold_test).permit(:text, :user_id)
+  end
 end

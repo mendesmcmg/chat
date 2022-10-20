@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   post 'rooms/join' => 'rooms#join'
   post 'rooms/:room_id/leave' => 'rooms#leave'

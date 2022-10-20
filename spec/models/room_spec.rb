@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do
-  it 'adds user to room' do   #
-    user = User.create(name: "TestUser")
-    room = Room.create(name: "TestRoom")
-    
+  it 'adds user to room' do
+    user = User.create(name: 'TestUser')
+    room = Room.create(name: 'TestRoom')
+
     room.add_user(user)
 
     expect(room.user_rooms.length).to eq 1
@@ -12,11 +14,11 @@ RSpec.describe Room, type: :model do
     expect(room.user_rooms.first.active).to eq true
   end
 
-  it 'removes user from previous room' do   #
-    user = User.create(name: "TestUser")
-    room1 = Room.create(name: "TestRoom1")
-    room2 = Room.create(name: "TestRoom2")
-    
+  it 'removes user from previous room' do
+    user = User.create(name: 'TestUser')
+    room1 = Room.create(name: 'TestRoom1')
+    room2 = Room.create(name: 'TestRoom2')
+
     room1.add_user(user)
     room2.add_user(user)
 
@@ -27,13 +29,13 @@ RSpec.describe Room, type: :model do
     expect(user_room.active).to be true
   end
 
-  it 'adds 3 users and removes the second one' do #
-    user1 = User.create(name: "TestUser1")
-    user2 = User.create(name: "TestUser2")
-    user3 = User.create(name: "TestUser3")
+  it 'adds 3 users and removes the second one' do
+    user1 = User.create(name: 'TestUser1')
+    user2 = User.create(name: 'TestUser2')
+    user3 = User.create(name: 'TestUser3')
 
-    room1 = Room.create(name: "TestRoom1")
-    room2 = Room.create(name: "TestRoom2")
+    room1 = Room.create(name: 'TestRoom1')
+    room2 = Room.create(name: 'TestRoom2')
 
     room1.add_user(user1)
     room1.add_user(user2)
@@ -52,11 +54,11 @@ RSpec.describe Room, type: :model do
     expect(user2_room2.active).to eq true
   end
 
-  it 'returns user to previous room' do   #
-    user = User.create(name: "TestUser")
-    room1 = Room.create(name: "TestRoom1")
-    room2 = Room.create(name: "TestRoom2")
-    
+  it 'returns user to previous room' do
+    user = User.create(name: 'TestUser')
+    room1 = Room.create(name: 'TestRoom1')
+    room2 = Room.create(name: 'TestRoom2')
+
     room1.add_user(user)
     room2.add_user(user)
 

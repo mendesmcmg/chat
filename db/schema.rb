@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,62 +12,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_185224) do
+ActiveRecord::Schema[7.0].define(version: 20_221_017_185_224) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "messages", force: :cascade do |t|
-    t.string "text"
-    t.bigint "user_id", null: false
-    t.bigint "room_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_messages_on_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+  create_table 'messages', force: :cascade do |t|
+    t.string 'text'
+    t.bigint 'user_id', null: false
+    t.bigint 'room_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['room_id'], name: 'index_messages_on_room_id'
+    t.index ['user_id'], name: 'index_messages_on_user_id'
   end
 
-  create_table "rooms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'rooms', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "scaffold_tests", force: :cascade do |t|
-    t.string "text"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_scaffold_tests_on_user_id"
+  create_table 'scaffold_tests', force: :cascade do |t|
+    t.string 'text'
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_scaffold_tests_on_user_id'
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_tests_on_user_id"
+  create_table 'tests', force: :cascade do |t|
+    t.string 'name'
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_tests_on_user_id'
   end
 
-  create_table "user_rooms", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "room_id", null: false
-    t.boolean "active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_user_rooms_on_room_id"
-    t.index ["user_id"], name: "index_user_rooms_on_user_id"
+  create_table 'user_rooms', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.bigint 'room_id', null: false
+    t.boolean 'active'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['room_id'], name: 'index_user_rooms_on_room_id'
+    t.index ['user_id'], name: 'index_user_rooms_on_user_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "messages", "rooms"
-  add_foreign_key "messages", "users"
-  add_foreign_key "scaffold_tests", "users"
-  add_foreign_key "tests", "users"
-  add_foreign_key "user_rooms", "rooms"
-  add_foreign_key "user_rooms", "users"
+  add_foreign_key 'messages', 'rooms'
+  add_foreign_key 'messages', 'users'
+  add_foreign_key 'scaffold_tests', 'users'
+  add_foreign_key 'tests', 'users'
+  add_foreign_key 'user_rooms', 'rooms'
+  add_foreign_key 'user_rooms', 'users'
 end
