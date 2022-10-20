@@ -8,11 +8,11 @@ RSpec.describe 'Rooms', type: :request do
 
   describe 'POST /rooms/join' do
     it 'adds user to room' do
-      post "/rooms/join?user=1user&room=1room"
+      post '/rooms/join?user=1user&room=1room'
 
-      expect(User.last.name).to eq ("1user")
-      expect(Room.last.name).to eq ("1room")
-      expect(UserRoom.last.active).to eq (true)
+      expect(User.last.name).to eq('1user')
+      expect(Room.last.name).to eq('1room')
+      expect(UserRoom.last.active).to eq(true)
     end
   end
 
