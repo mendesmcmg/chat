@@ -2,6 +2,7 @@
 
 class Room < ApplicationRecord
   has_many :user_rooms
+  validates :name, uniqueness: true, format: { without: /\s/, message: 'No empty spaces on room name please :(' }
 
   def add_user(user)
     user_rooms = UserRoom.where(user_id: user.id)

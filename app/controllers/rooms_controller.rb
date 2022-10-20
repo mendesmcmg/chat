@@ -4,6 +4,10 @@ class RoomsController < ApplicationController
   def join
     user = User.find_or_create_by(name: params[:user])
     room = Room.find_or_create_by(name: params[:room])
+
+    raise ActiveRecord::RecordInvalid, user if user.invalid?
+    raise ActiveRecord::RecordInvalid, room if room.invalid?
+    
     room.add_user(user)
 
     render json: room
