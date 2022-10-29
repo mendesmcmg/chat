@@ -17,4 +17,11 @@ RSpec.describe 'json_web_token' do
     decoded = JsonWebToken.decode(token)
     expect(decoded[:exp]).to be_truthy
   end
+
+  it 'raises error when t' do
+    user = User.create(name: 'TestUser')
+
+    token = JsonWebToken.encode({ id: user.id }, -1.hours.from_now)
+    expect{ JsonWebToken.decode(token) }.to raise_error
+  end
 end
