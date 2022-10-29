@@ -18,7 +18,7 @@ RSpec.describe 'json_web_token' do
     expect(decoded[:exp]).to be_truthy
   end
 
-  it 'raises error when t' do
+  it 'raises error when token expiration time has passed' do
     user = User.create(name: 'TestUser')
 
     token = JsonWebToken.encode({ id: user.id }, -1.hours.from_now)
